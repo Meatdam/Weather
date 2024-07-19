@@ -59,7 +59,7 @@ class WeatherListAPIView(generics.ListAPIView):
     """
     serializer_class = WeatherSerializer
     queryset = WeatherModel.objects.all()
-    permission_classes = (IsAuthenticated, IsSuperuser)
+    permission_classes = (IsAuthenticated,)
     pagination_class = Paginator
 
 
