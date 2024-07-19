@@ -1,0 +1,54 @@
+{% extends 'weather/base.html' %}
+{% load static %}
+
+{% block title %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-6 m-3">Weather</h1>
+    <p class="lead">Прогноз погоды в любое время, в любом месте</p>
+    <p class="lead">Мы рады что <b>вы</b> с нами!</p>
+</div>
+{% endblock %}
+
+{% block container %}
+
+<div class="container mt-5">
+        <div class="row">
+            <div class="col-5">
+                <h1>Погода в вашем городе</h1>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.city }}
+
+                    <input type="submit" name="send" value="Узнать" class="mt-2 btn btn-danger">
+                </form>
+            </div>
+<div class="col-5 offset-2">
+                <h1>Информация</h1>
+
+                {% for city in all_info %}
+                {% if user == city.owner or user.is_superuser %}
+                <div class="alert alert-info">
+                    <div class="row">
+                        <div class="col-9">
+                            <b>Город:</b> {{ city.city }}<br>
+                            <b>Температура:</b> {{ city.temperature }}<sup>o</sup><br>
+                        </div>
+                        <div class="col-2 offset-1">
+                            <img src="http://openweathermap.org/img/w/{{ city.icon }}.png" alt="Картинка погоды">
+                        </div>
+                    </div>
+                    <a class="btn btn-outline-danger btn-block" href="{% url 'weather:delete_weather' city.id %}">
+                                Удалить
+                            </a>
+                </div>
+{% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+
+</div>
+
+
+
+{% endblock %}
