@@ -4,11 +4,16 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
 from users.common import TitleMixin
 from weather.forms import CityForm
 
 from weather.models import WeatherModel
+from weather.paginators import Paginator
+from weather.permissions import IsOwner, IsSuperuser
+from weather.serializers import WeatherSerializer
 
 
 @login_required
@@ -46,3 +51,22 @@ class WeatherDeleteView(DeleteView, TitleMixin):
 
     def get_success_url(self):
         return reverse_lazy('weather:weather')
+
+
+class WeatherListAPIView(generics.ListAPIView):
+    """
+    API для получения списка запросов погоды всех пользователей
+    """
+    serializer_class = WeatherSerializer
+    queryset = WeatherModel.objects.all()
+    permission_classes = (IsAuthenticated, IsSuperuser)
+    pagination_class = Paginator
+
+
+class WeatherRetrieveAPIView(generics.RetrieveAPIView):
+    """
+    API для получения одного клиента с его запросами погоды
+    """
+    serializer_class = WeatherSerializer
+    queryset = WeatherModel.objects.all()
+    permission_classes = (IsAuthenticated, IsOwner)
