@@ -30,7 +30,7 @@ _____
 - psycopg2 (ORM);
 - Unittest;
 - Swagger;
-- reedoc.
+- redoc.
 _____
 Данное приложение работает на взаимодействие через внешний API-погоды `https://openweathermap.org/`.<br>
 ____
