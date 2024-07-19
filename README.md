@@ -60,12 +60,13 @@ pip install -r requirements.txt
 ### Я оставил свой API, в случае если вы не захотите регестрироваться на сайте https://openweathermap.org/. Можете воспользоваться моим.
 6. Для запуска проекта использовать команду
 ```
-python manage.py ruserver
+python manage.py runserver
 ```
 7. Для создания суперпользователя, необходимо выполнить команду в консоле
 ```
 python manage.py csu
 ```
+Но при этом не забудьте добавить в .env файл АDMIN_EMAIL, любой email для суперпользователя, чтоб заходить могли по заданному email.
 
 Автор проекта:<br>
 [Кузькин Илья](https://github.com/Meatdam)
