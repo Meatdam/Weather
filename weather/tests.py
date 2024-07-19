@@ -6,9 +6,9 @@ from weather.models import WeatherModel
 from rest_framework.test import APITestCase
 
 
-class HabitsTestCase(APITestCase):
+class WeatherTestCase(APITestCase):
     """
-    Тестирование создания, изменения и получения привычки
+    Тестирование получения погоды
     """
     def setUp(self):
         self.user = User.objects.create(email="test@mail.ru")
@@ -17,7 +17,7 @@ class HabitsTestCase(APITestCase):
 
     def test_weather_list(self):
         """
-        Тест получения списка привычек
+        Тест получения списка всех запросов погоды
         """
         url = reverse('weather:list')
         response = self.client.get(url)
@@ -36,7 +36,7 @@ class HabitsTestCase(APITestCase):
 
     def test_weather_retrieve(self):
         """
-        Тест получения одной привычки
+        Тест получения одного пользователя с запросами погоды
         """
         url = reverse('weather:detail', args=(self.weather.pk,))
         response = self.client.get(url)
