@@ -66,7 +66,8 @@ python manage.py runserver
 ```
 python manage.py csu
 ```
-Но при этом не забудьте добавить в .env файл АDMIN_EMAIL, любой email для суперпользователя, чтоб заходить могли по заданному email.
+Но при этом не забудьте добавить в .env файл АDMIN_EMAIL, любой email для суперпользователя, чтоб заходить могли по заданному email.<br>
+____
 Для запуска проекта с принимением Docker:
 1. Повторит шаги 1-3;
 2. Запустить Docker у себя локально;
@@ -78,6 +79,7 @@ docker compose up -d --build
 ```
 docker compose down
 ```
+____
 
 Автор проекта:<br>
 [Кузькин Илья](https://github.com/Meatdam)
