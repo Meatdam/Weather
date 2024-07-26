@@ -12,7 +12,7 @@ from weather.forms import CityForm
 
 from weather.models import WeatherModel
 from weather.paginators import Paginator
-from weather.permissions import IsOwner, IsSuperuser
+from weather.permissions import IsOwner
 from weather.serializers import WeatherSerializer
 
 
